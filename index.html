@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>@forgehk — engineer · founder of DarkForge AI</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Security tooling, full-stack platforms, AI automation. Founder of DarkForge AI.">
+  <meta name="theme-color" content="#0b0d11">
+  <meta property="og:title" content="@forgehk">
+  <meta property="og:description" content="Engineer building security tooling and full-stack platforms.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%237cc4ff'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-size='18' font-weight='700' fill='%230b0d11'%3E%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0b0d11;
+      --bg-card: #11141a;
+      --bg-card-hover: #161a22;
+      --border: #1d2433;
+      --text: #d8e0ec;
+      --text-dim: #7e8898;
+      --accent: #7cc4ff;
+      --accent-2: #ffd56a;
+      --danger: #ff7a6b;
+      --success: #6ade7c;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+                 line-height: 1.55; }
+    body { font-size: 16px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, pre { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+    nav { position: sticky; top: 0; z-index: 10; background: rgba(11,13,17,0.85);
+          backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    nav .row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    nav .brand { font-weight: 700; letter-spacing: 0.02em; }
+    nav .links a { margin-left: 18px; color: var(--text-dim); font-size: 14px; }
+    nav .links a:hover { color: var(--text); text-decoration: none; }
+
+    header.hero { padding: 84px 0 56px; border-bottom: 1px solid var(--border); }
+    header.hero h1 { font-size: clamp(32px, 5vw, 52px); margin: 0 0 14px;
+                     letter-spacing: -0.01em; line-height: 1.1; }
+    header.hero h1 span { color: var(--accent); }
+    header.hero p { max-width: 680px; font-size: 18px; color: var(--text-dim); margin: 0 0 22px; }
+    header.hero .pill { display: inline-block; padding: 4px 10px; margin: 0 6px 6px 0;
+                        background: var(--bg-card); border: 1px solid var(--border);
+                        border-radius: 999px; font-size: 12px; color: var(--text-dim); }
+    header.hero .ctas { margin-top: 18px; }
+    header.hero .ctas a { display: inline-block; padding: 10px 18px; margin: 0 10px 10px 0;
+                          border-radius: 8px; font-size: 14px; font-weight: 600;
+                          border: 1px solid var(--border); transition: 0.15s; }
+    header.hero .ctas a.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    header.hero .ctas a.primary:hover { background: #5fb1f6; text-decoration: none; }
+    header.hero .ctas a.secondary:hover { background: var(--bg-card); text-decoration: none; }
+
+    section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    section h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+                 color: var(--text-dim); margin: 0 0 22px; font-weight: 600; }
+    section h2 .count { color: var(--accent); }
+
+    .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+    .card { padding: 18px; background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 10px; transition: 0.15s; display: block; color: inherit; }
+    .card:hover { background: var(--bg-card-hover); text-decoration: none;
+                  transform: translateY(-1px); border-color: #2a3243; }
+    .card .head { display: flex; justify-content: space-between; align-items: baseline;
+                  margin-bottom: 6px; }
+    .card .head h3 { margin: 0; font-size: 16px; font-weight: 600; }
+    .card .head h3 .star { color: var(--accent-2); font-size: 12px; margin-left: 4px; }
+    .card .head .lang { font-size: 11px; color: var(--text-dim); }
+    .card p { margin: 4px 0 10px; font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+    .card .topics span { display: inline-block; padding: 2px 8px; margin: 0 4px 4px 0;
+                         background: #1a2030; border: 1px solid #232b3d; border-radius: 4px;
+                         font-size: 11px; color: var(--accent); }
+
+    .bucket { color: var(--text); font-weight: 600; font-size: 14px;
+              margin: 18px 0 10px; padding-top: 12px;
+              border-top: 1px dashed var(--border); }
+    .bucket:first-child { padding-top: 0; border-top: none; margin-top: 0; }
+
+    footer { padding: 40px 0 60px; color: var(--text-dim); font-size: 13px; }
+    footer .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--text-dim); }
+    footer a:hover { color: var(--accent); }
+
+    .roles { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+    .roles span { padding: 6px 12px; background: var(--bg-card); border: 1px solid var(--border);
+                  border-radius: 6px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container row">
+      <div class="brand"><a href="#top">@forgehk</a></div>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/forgehk">GitHub →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <h1>Hi, I'm <span>@forgehk</span>.<br>I build security tooling and full-stack platforms.</h1>
+      <p>Founder of <a href="https://darkforgeai.com">DarkForge AI</a> — an AI-automation and full-stack studio shipping platforms across wellness, e-commerce, real estate, and telehealth. Currently leveling up my security-engineering chops in public — offensive, defensive, and AppSec tooling on GitHub below.</p>
+      <div class="pill">Python</div>
+      <div class="pill">TypeScript</div>
+      <div class="pill">C++</div>
+      <div class="pill">Go</div>
+      <div class="pill">Next.js</div>
+      <div class="pill">Supabase</div>
+      <div class="pill">PIL · Pillow</div>
+      <div class="pill">Three.js</div>
+      <div class="pill">DNS · SSL · DMARC</div>
+      <div class="pill">MITRE ATT&amp;CK</div>
+      <div class="ctas">
+        <a class="primary" href="#projects">See projects</a>
+        <a class="secondary" href="mailto:info@darkforgeai.com">Get in touch</a>
+        <a class="secondary" href="https://github.com/forgehk">@forgehk on GitHub →</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects <span class="count">/ 17 shipped</span></h2>
+
+      <div class="bucket">AppSec / DevSecOps</div>
+      <div class="grid">
+        <a class="card" href="https://github.com/forgehk/pipeline-armor">
+          <div class="head"><h3>pipeline-armor <span class="star">★ flagship</span></h3><span class="lang">Python</span></div>
+          <p>Drop-in DevSecOps gate for GitHub Actions: secrets scanner, AST-based pattern scanner, YAML policy engine, vulnerable demo app.</p>
+          <div class="topics"><span>security</span><span>sast</span><span>secrets-detection</span><span>ci-cd</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/dns-doctor">
+          <div class="head"><h3>dns-doctor</h3><span class="lang">Python</span></div>
+          <p>One command to audit DNS, TLS, SPF, DKIM, DMARC, and HTTP security headers for a domain. Letter-graded report.</p>
+          <div class="topics"><span>dns</span><span>tls</span><span>dmarc</span><span>audit</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/secret-rotator">
+          <div class="head"><h3>secret-rotator</h3><span class="lang">Python</span></div>
+          <p>Rotate API keys across providers with snapshot-and-rollback safety. Pluggable provider / store / verifier drivers.</p>
+          <div class="topics"><span>devsecops</span><span>key-management</span><span>secret-rotation</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/nextjs-auth-armor">
+          <div class="head"><h3>nextjs-auth-armor <span class="star">★ flagship</span></h3><span class="lang">TypeScript</span></div>
+          <p>Next.js 14 starter with Supabase auth, Row-Level Security, honeypot-protected forms, and security-header middleware.</p>
+          <div class="topics"><span>nextjs</span><span>supabase</span><span>rls</span><span>appsec</span></div>
+        </a>
+      </div>
+
+      <div class="bucket">SOC / Blue Team</div>
+      <div class="grid">
+        <a class="card" href="https://github.com/forgehk/darkforge-edr">
+          <div class="head"><h3>darkforge-edr <span class="star">★ flagship</span></h3><span class="lang">Go</span></div>
+          <p>Lightweight endpoint detection agent. Process telemetry, YAML rule engine with name/cmdline/regex matching, JSON-lines alerts.</p>
+          <div class="topics"><span>edr</span><span>blue-team</span><span>mitre-attack</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/darkforge-edr-dashboard">
+          <div class="head"><h3>darkforge-edr-dashboard</h3><span class="lang">TypeScript</span></div>
+          <p>Next.js 14 alert console for the darkforge-edr agent. Filters, MITRE ATT&amp;CK coverage, top-rules chart.</p>
+          <div class="topics"><span>nextjs</span><span>dashboard</span><span>soc</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/phish-forge">
+          <div class="head"><h3>phish-forge <span class="star">★ flagship</span></h3><span class="lang">Python</span></div>
+          <p>Phishing email analyzer with header forensics, URL scoring, body heuristics. CLI + FastAPI service.</p>
+          <div class="topics"><span>phishing</span><span>fastapi</span><span>email-security</span></div>
+        </a>
+      </div>
+
+      <div class="bucket">Red Team / Offensive Security</div>
+      <div class="grid">
+        <a class="card" href="https://github.com/forgehk/ctf-toolkit">
+          <div class="head"><h3>ctf-toolkit</h3><span class="lang">Python</span></div>
+          <p>Swiss-army CLI for CTF challenges: classical ciphers, encoders, hash ID + cracking, frequency analysis.</p>
+          <div class="topics"><span>ctf</span><span>cryptography</span><span>ciphers</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/steg-toolkit">
+          <div class="head"><h3>steg-toolkit</h3><span class="lang">Python</span></div>
+          <p>Image steganography helpers: LSB hide/extract, strings recovery, per-channel entropy, LSB-plane heatmap.</p>
+          <div class="topics"><span>steganography</span><span>lsb</span><span>ctf</span></div>
+        </a>
+      </div>
+
+      <div class="bucket">Computer Science depth</div>
+      <div class="grid">
+        <a class="card" href="https://github.com/forgehk/mips-emulator">
+          <div class="head"><h3>mips-emulator <span class="star">★ flagship</span></h3><span class="lang">C++</span></div>
+          <p>MIPS-32 instruction emulator. Assembler + CPU + memory, runs textbook programs end-to-end. 16/16 tests passing.</p>
+          <div class="topics"><span>mips</span><span>emulator</span><span>systems</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/polyglot-sort-grand-prix">
+          <div class="head"><h3>polyglot-sort-grand-prix</h3><span class="lang">C · C++ · C#</span></div>
+          <p>Generic sorting in C, C++, and C#, plus a custom iterative introsort with 3-way partition and heapsort fallback.</p>
+          <div class="topics"><span>algorithms</span><span>sorting</span><span>introsort</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/bigint-cpp">
+          <div class="head"><h3>bigint-cpp</h3><span class="lang">C++</span></div>
+          <p>Arbitrary-precision integers with operator overloading, Collatz, and tail-recursive Fibonacci/factorial.</p>
+          <div class="topics"><span>bigint</span><span>operator-overloading</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/prolog-ufo-puzzle">
+          <div class="head"><h3>prolog-ufo-puzzle</h3><span class="lang">Prolog</span></div>
+          <p>Declarative logic-puzzle solver — describe the constraints, let the unifier do the work.</p>
+          <div class="topics"><span>prolog</span><span>logic-programming</span></div>
+        </a>
+      </div>
+
+      <div class="bucket">AI / Automation / Visual</div>
+      <div class="grid">
+        <a class="card" href="https://github.com/forgehk/lead-foundry">
+          <div class="head"><h3>lead-foundry</h3><span class="lang">Python</span></div>
+          <p>Normalize, dedupe, score, and export lead lists locally. Pluggable enrichment, weighted ICP scoring.</p>
+          <div class="topics"><span>sales</span><span>automation</span><span>data-cleaning</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/pixel-forge">
+          <div class="head"><h3>pixel-forge</h3><span class="lang">Python</span></div>
+          <p>HSV-based product color variants. Batch-generate catalog images from one photo using Pillow.</p>
+          <div class="topics"><span>pillow</span><span>image-processing</span><span>ecommerce</span></div>
+        </a>
+        <a class="card" href="https://github.com/forgehk/algoviz">
+          <div class="head"><h3>algoviz</h3><span class="lang">JavaScript</span></div>
+          <p>3D sorting-algorithm visualizer in vanilla Three.js. Bubble, merge, quick, heap, insertion sort — synced pseudocode overlay.</p>
+          <div class="topics"><span>threejs</span><span>visualization</span><span>3d</span></div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="container">
+      <h2>Stack</h2>
+      <pre style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; overflow-x: auto; font-size: 13px;">
+Languages    : Python · TypeScript · JavaScript · C++ · C · C# · Go · Java · SQL · Bash · Prolog
+Full-Stack   : React · Next.js · Node.js · Supabase · Netlify · REST APIs · Shopify
+AI / Auto    : Claude · LLM Orchestration · Agent Workflows · PIL/Pillow · Apify
+Security     : DNS (A/CNAME/MX/SPF/DKIM) · SSL/TLS · HTTP Headers · Env Isolation
+              · SAST · SCA · Secrets Scanning · Honeypot Forms · MITRE ATT&amp;CK
+              · LSB Steganography · Classical Cryptography · Phishing Forensics
+CS           : Data Structures · Algorithms · OS · Computer Architecture
+              · Logic Programming · Discrete Math · OOP
+DevOps       : Git · Linux · GitHub Actions · One-command Netlify deploys
+      </pre>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Open to</h2>
+      <div class="roles">
+        <span>Software Engineer Internships</span>
+        <span>AppSec / DevSecOps</span>
+        <span>SOC / Blue Team</span>
+        <span>Red Team / Offensive Security</span>
+        <span>Full-Stack / AI roles</span>
+      </div>
+      <p style="margin-top: 22px; max-width: 680px; color: var(--text-dim);">
+        Looking for <strong>Summer 2026 / Fall 2026</strong> opportunities — remote or hybrid.
+      </p>
+      <p style="margin-top: 8px;">
+        📬 <a href="mailto:info@darkforgeai.com">info@darkforgeai.com</a> &nbsp;·&nbsp;
+        🔗 <a href="https://github.com/forgehk">github.com/forgehk</a> &nbsp;·&nbsp;
+        🏢 <a href="https://darkforgeai.com">DarkForge AI</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container row">
+      <span>© 2026 @forgehk. <a href="https://github.com/forgehk/forgehk.github.io">View source</a>.</span>
+      <span>Built with vanilla HTML/CSS. No tracking, no analytics, no cookies.</span>
+    </div>
+  </footer>
+</body>
+</html>
