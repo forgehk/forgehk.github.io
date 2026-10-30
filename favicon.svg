@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#131416"/>
+  <defs>
+    <mask id="s" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><polygon points="-4,49 70,23 70,29 -4,55" fill="#000"/></mask>
+    <clipPath id="c"><path d="M10 8H24V26H40V8H54V56H40V38H24V56H10Z"/></clipPath>
+  </defs>
+  <path d="M10 8H24V26H40V8H54V56H40V38H24V56H10Z" fill="#EDEDEA" mask="url(#s)"/>
+  <polygon points="-4,50.6 70,24.6 70,27.4 -4,53.4" fill="#2A56E8" clip-path="url(#c)"/>
+</svg>

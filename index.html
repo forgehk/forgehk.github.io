@@ -1,283 +1,366 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
 <head>
-  <meta charset="utf-8">
-  <title>@forgehk — engineer · founder of DarkForge AI</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Security tooling, full-stack platforms, AI automation. Founder of DarkForge AI.">
-  <meta name="theme-color" content="#0b0d11">
-  <meta property="og:title" content="@forgehk">
-  <meta property="og:description" content="Engineer building security tooling and full-stack platforms.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%237cc4ff'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-size='18' font-weight='700' fill='%230b0d11'%3E%3C/text%3E%3C/svg%3E">
-  <style>
-    :root {
-      --bg: #0b0d11;
-      --bg-card: #11141a;
-      --bg-card-hover: #161a22;
-      --border: #1d2433;
-      --text: #d8e0ec;
-      --text-dim: #7e8898;
-      --accent: #7cc4ff;
-      --accent-2: #ffd56a;
-      --danger: #ff7a6b;
-      --success: #6ade7c;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
-                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
-                 line-height: 1.55; }
-    body { font-size: 16px; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    code, pre { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hasan Karakra | Engineer and founder of DarkForge AI</title>
+<meta name="description" content="Hasan Karakra is a computer science student at CSULB and the founder of DarkForge AI. Thirteen live platforms for real businesses, an adaptive web security training platform, security tooling, a compiler and an EDR agent, all with working code.">
+<link rel="canonical" href="https://hkforge.dev">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#131416">
+<meta name="author" content="Hasan Karakra">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="hkforge.dev">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://hkforge.dev">
+<meta property="og:title" content="Hasan Karakra | Engineer and founder of DarkForge AI">
+<meta property="og:description" content="Thirteen live platforms for real businesses, an adaptive web security training platform, security tooling, a compiler and an EDR agent, all with working code.">
+<meta property="og:image" content="https://hkforge.dev/og-image.jpg?v=4">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hasan Karakra, engineer and founder of DarkForge AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hasan Karakra | Engineer and founder of DarkForge AI">
+<meta name="twitter:description" content="Thirteen live platforms for real businesses, an adaptive web security training platform, security tooling, a compiler and an EDR agent, all with working code.">
+<meta name="twitter:image" content="https://hkforge.dev/og-image.jpg?v=4">
+<link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/favicon-32.png?v=4" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<link rel="preload" href="/assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="/assets/img/hero-1200.webp" imagesrcset="/assets/img/hero-1200.webp 1200w, /assets/img/hero.webp 2400w" imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="/assets/styles.css?v=202610301200">
 
-    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
-
-    nav { position: sticky; top: 0; z-index: 10; background: rgba(11,13,17,0.85);
-          backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-    nav .row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    nav .brand { font-weight: 700; letter-spacing: 0.02em; }
-    nav .links a { margin-left: 18px; color: var(--text-dim); font-size: 14px; }
-    nav .links a:hover { color: var(--text); text-decoration: none; }
-
-    header.hero { padding: 84px 0 56px; border-bottom: 1px solid var(--border); }
-    header.hero h1 { font-size: clamp(32px, 5vw, 52px); margin: 0 0 14px;
-                     letter-spacing: -0.01em; line-height: 1.1; }
-    header.hero h1 span { color: var(--accent); }
-    header.hero p { max-width: 680px; font-size: 18px; color: var(--text-dim); margin: 0 0 22px; }
-    header.hero .pill { display: inline-block; padding: 4px 10px; margin: 0 6px 6px 0;
-                        background: var(--bg-card); border: 1px solid var(--border);
-                        border-radius: 999px; font-size: 12px; color: var(--text-dim); }
-    header.hero .ctas { margin-top: 18px; }
-    header.hero .ctas a { display: inline-block; padding: 10px 18px; margin: 0 10px 10px 0;
-                          border-radius: 8px; font-size: 14px; font-weight: 600;
-                          border: 1px solid var(--border); transition: 0.15s; }
-    header.hero .ctas a.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-    header.hero .ctas a.primary:hover { background: #5fb1f6; text-decoration: none; }
-    header.hero .ctas a.secondary:hover { background: var(--bg-card); text-decoration: none; }
-
-    section { padding: 56px 0; border-bottom: 1px solid var(--border); }
-    section h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
-                 color: var(--text-dim); margin: 0 0 22px; font-weight: 600; }
-    section h2 .count { color: var(--accent); }
-
-    .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
-    @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
-
-    .card { padding: 18px; background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 10px; transition: 0.15s; display: block; color: inherit; }
-    .card:hover { background: var(--bg-card-hover); text-decoration: none;
-                  transform: translateY(-1px); border-color: #2a3243; }
-    .card .head { display: flex; justify-content: space-between; align-items: baseline;
-                  margin-bottom: 6px; }
-    .card .head h3 { margin: 0; font-size: 16px; font-weight: 600; }
-    .card .head h3 .star { color: var(--accent-2); font-size: 12px; margin-left: 4px; }
-    .card .head .lang { font-size: 11px; color: var(--text-dim); }
-    .card p { margin: 4px 0 10px; font-size: 14px; color: var(--text-dim); line-height: 1.5; }
-    .card .topics span { display: inline-block; padding: 2px 8px; margin: 0 4px 4px 0;
-                         background: #1a2030; border: 1px solid #232b3d; border-radius: 4px;
-                         font-size: 11px; color: var(--accent); }
-
-    .bucket { color: var(--text); font-weight: 600; font-size: 14px;
-              margin: 18px 0 10px; padding-top: 12px;
-              border-top: 1px dashed var(--border); }
-    .bucket:first-child { padding-top: 0; border-top: none; margin-top: 0; }
-
-    footer { padding: 40px 0 60px; color: var(--text-dim); font-size: 13px; }
-    footer .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    footer a { color: var(--text-dim); }
-    footer a:hover { color: var(--accent); }
-
-    .roles { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
-    .roles span { padding: 6px 12px; background: var(--bg-card); border: 1px solid var(--border);
-                  border-radius: 6px; font-size: 13px; }
-  </style>
 </head>
 <body>
-  <nav>
-    <div class="container row">
-      <div class="brand"><a href="#top">@forgehk</a></div>
-      <div class="links">
-        <a href="#projects">Projects</a>
-        <a href="#stack">Stack</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/forgehk">GitHub →</a>
-      </div>
-    </div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="brand" href="/" aria-label="Hasan Karakra, home">
+    <svg class="mark" viewBox="0 0 132 72" aria-hidden="true">
+      <defs><mask id="nav-slice" maskUnits="userSpaceOnUse" x="0" y="0" width="132" height="72"><rect width="132" height="72" fill="#fff"/><polygon points="-4,62 136,12 136,20 -4,70" fill="#000"/></mask></defs>
+      <g fill="currentColor" mask="url(#nav-slice)"><path d="M6 6H24V29H40V6H58V66H40V43H24V66H6Z"/><path d="M72 6H90V27L112 6H132L104 34L132 66H112L90 40V66H72Z"/></g>
+    </svg>
+    <span class="who"><span>Hasan Karakra</span><span>Engineer, Anaheim</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#work">Work</a>
+    <a href="/#about">About</a>
+    <a href="/#contact">Contact</a>
   </nav>
-
-  <header class="hero" id="top">
-    <div class="container">
-      <h1>Hi, I'm <span>@forgehk</span>.<br>I build security tooling and full-stack platforms.</h1>
-      <p>Founder of <a href="https://darkforgeai.com">DarkForge AI</a> — an AI-automation and full-stack studio shipping platforms across wellness, e-commerce, real estate, and telehealth. Currently leveling up my security-engineering chops in public — offensive, defensive, and AppSec tooling on GitHub below.</p>
-      <div class="pill">Python</div>
-      <div class="pill">TypeScript</div>
-      <div class="pill">C++</div>
-      <div class="pill">Go</div>
-      <div class="pill">Next.js</div>
-      <div class="pill">Supabase</div>
-      <div class="pill">PIL · Pillow</div>
-      <div class="pill">Three.js</div>
-      <div class="pill">DNS · SSL · DMARC</div>
-      <div class="pill">MITRE ATT&amp;CK</div>
-      <div class="ctas">
-        <a class="primary" href="#projects">See projects</a>
-        <a class="secondary" href="mailto:info@darkforgeai.com">Get in touch</a>
-        <a class="secondary" href="https://github.com/forgehk">@forgehk on GitHub →</a>
-      </div>
+</header>
+<button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+<aside class="drawer" id="drawer">
+  <div>
+    <p class="label">Navigation</p>
+    <nav aria-label="Menu">
+      <a href="/#work">Work</a>
+      <a href="/#systems">Systems</a>
+      <a href="/#open-source">Open source</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+  <div>
+    <p class="label">Elsewhere</p>
+    <div class="socials">
+      <a href="https://github.com/forgehk" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/hasan-karakra-ba94a440b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://app.joinhandshake.com/profiles/hasan-karakra" target="_blank" rel="noopener">Handshake</a>
+      <a href="https://darkforgeai.com" target="_blank" rel="noopener">DarkForge AI</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
-  </header>
+  </div>
+</aside>
 
-  <section id="projects">
-    <div class="container">
-      <h2>Projects <span class="count">/ 17 shipped</span></h2>
+<main id="main">
+<div class="preloader" aria-hidden="true"><div class="word">Hello</div></div>
 
-      <div class="bucket">AppSec / DevSecOps</div>
-      <div class="grid">
-        <a class="card" href="https://github.com/forgehk/pipeline-armor">
-          <div class="head"><h3>pipeline-armor <span class="star">★ flagship</span></h3><span class="lang">Python</span></div>
-          <p>Drop-in DevSecOps gate for GitHub Actions: secrets scanner, AST-based pattern scanner, YAML policy engine, vulnerable demo app.</p>
-          <div class="topics"><span>security</span><span>sast</span><span>secrets-detection</span><span>ci-cd</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/dns-doctor">
-          <div class="head"><h3>dns-doctor</h3><span class="lang">Python</span></div>
-          <p>One command to audit DNS, TLS, SPF, DKIM, DMARC, and HTTP security headers for a domain. Letter-graded report.</p>
-          <div class="topics"><span>dns</span><span>tls</span><span>dmarc</span><span>audit</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/secret-rotator">
-          <div class="head"><h3>secret-rotator</h3><span class="lang">Python</span></div>
-          <p>Rotate API keys across providers with snapshot-and-rollback safety. Pluggable provider / store / verifier drivers.</p>
-          <div class="topics"><span>devsecops</span><span>key-management</span><span>secret-rotation</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/nextjs-auth-armor">
-          <div class="head"><h3>nextjs-auth-armor <span class="star">★ flagship</span></h3><span class="lang">TypeScript</span></div>
-          <p>Next.js 14 starter with Supabase auth, Row-Level Security, honeypot-protected forms, and security-header middleware.</p>
-          <div class="topics"><span>nextjs</span><span>supabase</span><span>rls</span><span>appsec</span></div>
-        </a>
+<section class="hero">
+  <div class="bg"><img src="/assets/img/hero.webp" srcset="/assets/img/hero-1200.webp 1200w, /assets/img/hero.webp 2400w" sizes="100vw" width="2400" height="1350" alt="A dark loft studio at night: two monitors of code, a notebook of system diagrams, rain on the window and city lights beyond" fetchpriority="high" decoding="async"></div>
+  <div class="side">
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M17 7 7 17" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p>Computer science student at CSULB, founder of DarkForge AI, and the engineer behind thirteen live platforms.</p>
+  </div>
+  <div class="badge" aria-hidden="true">
+    <svg viewBox="0 0 150 150"><defs><path id="ring" d="M75 75 m-58 0 a58 58 0 1 1 116 0 a58 58 0 1 1 -116 0"/></defs><text><textPath href="#ring" startOffset="0">Based in Anaheim, CA · Open to work ·&#160;</textPath></text></svg>
+    <div class="globe"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c3 3.2 3 16.8 0 20M12 2c-3 3.2-3 16.8 0 20"/></svg></div>
+  </div>
+  <h1 class="name" aria-label="Hasan Karakra"><span class="track" aria-hidden="true"><span>Hasan Karakra</span><span>Hasan Karakra</span><span>Hasan Karakra</span><span>Hasan Karakra</span></span></h1>
+</section>
+
+<section class="statement">
+  <h2 class="lines">I build production systems for businesses that depend on them, then open-source the tooling that made them possible.</h2>
+  <div class="aside">
+    <p class="fade">Founder of DarkForge AI, an AI automation and product engineering studio in Orange County. Thirteen live platforms, eight internal systems, a senior project in web security, and twenty-four public repositories with code you can run.</p>
+    <a class="roundbtn fade" href="#about"><span>About me</span></a>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <p class="label"><span>Selected work</span><span>Thirteen live projects. Click one to open the case</span></p>
+  <div class="list">
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-farmacia-wellness" data-shot="farmacia-wellness"><span class="t">Farmacia Wellness</span><span class="m">Bilingual supplement store with wholesale and pickup<small>HTML, CSS, JS, Authorize.Net · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-farmacia-wellness"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>farmaciasupplements.com</span></div><div class="screen"><img src="/assets/img/tall-farmacia-wellness.webp" srcset="/assets/img/tall-farmacia-wellness-800.webp 800w, /assets/img/tall-farmacia-wellness.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Farmacia Wellness, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Commerce · Live · 2026</p>
+        <h3>Pharmacy grade supplements, in English and Spanish.</h3>
+        <p>A multi page store for the Farmacia pharmacy group: fourteen formulas, a cart with Authorize.Net checkout, a wholesale channel, order status, policies and real store photography. Every string ships in English and Spanish, and the pages are static so they stay fast on the phones most customers use.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, build, catalog, photography, deploy</dd></div><div><dt>Stack</dt><dd>HTML, CSS, JS, Netlify forms, Authorize.Net, GA4</dd></div><div><dt>Outcome</dt><dd>14 products, English and Spanish throughout, wholesale and pickup paths, policies reviewed with the owner</dd></div></dl>
+        <a class="pill dark" href="https://farmaciasupplements.com" target="_blank" rel="noopener">Visit farmaciasupplements.com <span aria-hidden="true">&#8599;</span></a>
       </div>
-
-      <div class="bucket">SOC / Blue Team</div>
-      <div class="grid">
-        <a class="card" href="https://github.com/forgehk/darkforge-edr">
-          <div class="head"><h3>darkforge-edr <span class="star">★ flagship</span></h3><span class="lang">Go</span></div>
-          <p>Lightweight endpoint detection agent. Process telemetry, YAML rule engine with name/cmdline/regex matching, JSON-lines alerts.</p>
-          <div class="topics"><span>edr</span><span>blue-team</span><span>mitre-attack</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/darkforge-edr-dashboard">
-          <div class="head"><h3>darkforge-edr-dashboard</h3><span class="lang">TypeScript</span></div>
-          <p>Next.js 14 alert console for the darkforge-edr agent. Filters, MITRE ATT&amp;CK coverage, top-rules chart.</p>
-          <div class="topics"><span>nextjs</span><span>dashboard</span><span>soc</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/phish-forge">
-          <div class="head"><h3>phish-forge <span class="star">★ flagship</span></h3><span class="lang">Python</span></div>
-          <p>Phishing email analyzer with header forensics, URL scoring, body heuristics. CLI + FastAPI service.</p>
-          <div class="topics"><span>phishing</span><span>fastapi</span><span>email-security</span></div>
-        </a>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-hairrx" data-shot="hairrx"><span class="t">HairRx Lab</span><span class="m">Telehealth prescription storefront<small>Next.js 14, Framer Motion, Lenis · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-hairrx"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>hairrxlab.com</span></div><div class="screen"><img src="/assets/img/tall-hairrx.webp" srcset="/assets/img/tall-hairrx-800.webp 800w, /assets/img/tall-hairrx.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="HairRx Lab, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Telehealth · Live · 2026</p>
+        <h3>An editorial storefront for a compounded hair regrowth prescription.</h3>
+        <p>A single product site for a compounded topical: a scroll pinned sequence from sign up to scalp, a drag to compare before and after slider, the formula explained, three pricing options and a consultation flow that routes to a licensed prescriber. Rx only language throughout.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, build, motion, deploy</dd></div><div><dt>Stack</dt><dd>Next.js 14, Framer Motion, Lenis, Radix</dd></div><div><dt>Outcome</dt><dd>Static Next.js build on a real customer domain; consultation handoff to the prescriber</dd></div></dl>
+        <a class="pill dark" href="https://hairrxlab.com" target="_blank" rel="noopener">Visit hairrxlab.com <span aria-hidden="true">&#8599;</span></a>
       </div>
-
-      <div class="bucket">Red Team / Offensive Security</div>
-      <div class="grid">
-        <a class="card" href="https://github.com/forgehk/ctf-toolkit">
-          <div class="head"><h3>ctf-toolkit</h3><span class="lang">Python</span></div>
-          <p>Swiss-army CLI for CTF challenges: classical ciphers, encoders, hash ID + cracking, frequency analysis.</p>
-          <div class="topics"><span>ctf</span><span>cryptography</span><span>ciphers</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/steg-toolkit">
-          <div class="head"><h3>steg-toolkit</h3><span class="lang">Python</span></div>
-          <p>Image steganography helpers: LSB hide/extract, strings recovery, per-channel entropy, LSB-plane heatmap.</p>
-          <div class="topics"><span>steganography</span><span>lsb</span><span>ctf</span></div>
-        </a>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-cyberforge" data-shot="cyberforge"><span class="t">CyberForge</span><span class="m">Adaptive web security training platform<small>Python engine, Netlify Functions, Supabase · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-cyberforge"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>cyberforge-cecs491a.netlify.app</span></div><div class="screen"><img src="/assets/img/tall-cyberforge.webp" srcset="/assets/img/tall-cyberforge-800.webp 800w, /assets/img/tall-cyberforge.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="CyberForge, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Senior project · In progress · 2026</p>
+        <h3>A course that places you first, then teaches only what you need.</h3>
+        <p>CECS 491A senior project at CSULB, team of five. A 32 question placement marks each of 16 lessons as mastered, review or learn; a prerequisite graph unlocks the path; every lesson ends in a lab on a vulnerable application that is graded on the server. I built the application shell, the browser copy of the path engine, the Supabase accounts and server side grading, the nine tool security toolkit, the lab workbench and the 3D hero, and ran the design and accessibility audit.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Application, backend integration, toolkit, audit</dd></div><div><dt>Stack</dt><dd>Python engine, vanilla JS, Netlify Functions running Pyodide, Supabase, Three.js</dd></div><div><dt>Outcome</dt><dd>16 lessons and a capstone, 18 labs, zero console errors and no overflow at 360 px on every route, the site grades itself A on its own header check</dd></div></dl>
+        <a class="pill dark" href="https://cyberforge-cecs491a.netlify.app" target="_blank" rel="noopener">Visit cyberforge-cecs491a.netlify.app <span aria-hidden="true">&#8599;</span></a>
       </div>
-
-      <div class="bucket">Computer Science depth</div>
-      <div class="grid">
-        <a class="card" href="https://github.com/forgehk/mips-emulator">
-          <div class="head"><h3>mips-emulator <span class="star">★ flagship</span></h3><span class="lang">C++</span></div>
-          <p>MIPS-32 instruction emulator. Assembler + CPU + memory, runs textbook programs end-to-end. 16/16 tests passing.</p>
-          <div class="topics"><span>mips</span><span>emulator</span><span>systems</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/polyglot-sort-grand-prix">
-          <div class="head"><h3>polyglot-sort-grand-prix</h3><span class="lang">C · C++ · C#</span></div>
-          <p>Generic sorting in C, C++, and C#, plus a custom iterative introsort with 3-way partition and heapsort fallback.</p>
-          <div class="topics"><span>algorithms</span><span>sorting</span><span>introsort</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/bigint-cpp">
-          <div class="head"><h3>bigint-cpp</h3><span class="lang">C++</span></div>
-          <p>Arbitrary-precision integers with operator overloading, Collatz, and tail-recursive Fibonacci/factorial.</p>
-          <div class="topics"><span>bigint</span><span>operator-overloading</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/prolog-ufo-puzzle">
-          <div class="head"><h3>prolog-ufo-puzzle</h3><span class="lang">Prolog</span></div>
-          <p>Declarative logic-puzzle solver — describe the constraints, let the unifier do the work.</p>
-          <div class="topics"><span>prolog</span><span>logic-programming</span></div>
-        </a>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-keykarams" data-shot="keykarams"><span class="t">KeyKarams</span><span class="m">D2C landing page with a 3D product viewer<small>three.js, Shopify checkout · 2025</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-keykarams"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>keykarams.com</span></div><div class="screen"><img src="/assets/img/tall-keykarams.webp" srcset="/assets/img/tall-keykarams-800.webp 800w, /assets/img/tall-keykarams.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="KeyKarams, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Commerce · Live · 2025</p>
+        <h3>A custom front end for a precision machined key spinner.</h3>
+        <p>A hand built landing page with an interactive three.js model of the product, colour variants, a comparison table, reviews and FAQ, and an on page cart that hands off to Shopify checkout. Klaviyo abandoned cart and post purchase flows run behind it. Product photography variants came out of the image pipeline in the Systems section.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, build, 3D viewer, Klaviyo flows, catalog</dd></div><div><dt>Stack</dt><dd>HTML, CSS, JS, three.js, Shopify checkout, Klaviyo</dd></div><div><dt>Outcome</dt><dd>98 PageSpeed; 22 percent more carts recovered after the Klaviyo flows; 10 plus SKUs</dd></div></dl>
+        <a class="pill dark" href="https://keykarams.com/" target="_blank" rel="noopener">Visit keykarams.com <span aria-hidden="true">&#8599;</span></a>
       </div>
-
-      <div class="bucket">AI / Automation / Visual</div>
-      <div class="grid">
-        <a class="card" href="https://github.com/forgehk/lead-foundry">
-          <div class="head"><h3>lead-foundry</h3><span class="lang">Python</span></div>
-          <p>Normalize, dedupe, score, and export lead lists locally. Pluggable enrichment, weighted ICP scoring.</p>
-          <div class="topics"><span>sales</span><span>automation</span><span>data-cleaning</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/pixel-forge">
-          <div class="head"><h3>pixel-forge</h3><span class="lang">Python</span></div>
-          <p>HSV-based product color variants. Batch-generate catalog images from one photo using Pillow.</p>
-          <div class="topics"><span>pillow</span><span>image-processing</span><span>ecommerce</span></div>
-        </a>
-        <a class="card" href="https://github.com/forgehk/algoviz">
-          <div class="head"><h3>algoviz</h3><span class="lang">JavaScript</span></div>
-          <p>3D sorting-algorithm visualizer in vanilla Three.js. Bubble, merge, quick, heap, insertion sort — synced pseudocode overlay.</p>
-          <div class="topics"><span>threejs</span><span>visualization</span><span>3d</span></div>
-        </a>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-darkforge" data-shot="darkforge"><span class="t">DarkForge AI</span><span class="m">Studio site and ROI calculator<small>Design and development · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-darkforge"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>darkforgeai.com</span></div><div class="screen"><img src="/assets/img/tall-darkforge.webp" srcset="/assets/img/tall-darkforge-800.webp 800w, /assets/img/tall-darkforge.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="DarkForge AI, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Agency · Live · 2026</p>
+        <h3>The studio&#x27;s own site, built like a product.</h3>
+        <p>Fixed scope AI, commerce and infrastructure work for Orange County operators, presented the way a real firm presents: services, process, work, insights. A static build with a lead qualifying ROI calculator, SEO landing pages, and a build step that fails on broken links or unreplaced copy.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, build, imagery, deploy</dd></div><div><dt>Stack</dt><dd>HTML, CSS, JS, Python build, Netlify</dd></div><div><dt>Outcome</dt><dd>About a third of qualified leads arrive through the calculator; 24 pages; the build fails on any broken link</dd></div></dl>
+        <a class="pill dark" href="https://darkforgeai.com" target="_blank" rel="noopener">Visit darkforgeai.com <span aria-hidden="true">&#8599;</span></a>
       </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-farmaciarx" data-shot="farmaciarx"><span class="t">FarmaciaRx</span><span class="m">Six pharmacies, one landing page, plus a telehealth front door<small>HTML, CSS, JS, hreflang EN and ES · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-farmaciarx"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>farmaciarx.com</span></div><div class="screen"><img src="/assets/img/tall-farmaciarx.webp" srcset="/assets/img/tall-farmaciarx-800.webp 800w, /assets/img/tall-farmaciarx.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="FarmaciaRx, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Healthcare · Live · 2026</p>
+        <h3>One design system for a pharmacy group and its online care.</h3>
+        <p>farmaciarx.com is the group landing page: six locations with hours, phones and reviews, transfer and refill forms, compounding, FAQ, with a full Spanish version under /es/ and hreflang. farmaciarxcare.com is the telehealth front door built on the same system: treatment paths for sexual health, hair loss and weight loss, a consultation form, and Rx only messaging reviewed with the pharmacist.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design system, both builds, bilingual content, deploy</dd></div><div><dt>Stack</dt><dd>HTML, CSS, JS, Netlify forms, hreflang</dd></div><div><dt>Outcome</dt><dd>Two properties, one system; English and Spanish on both; forms that reach the pharmacy inbox</dd></div></dl>
+        <a class="pill dark" href="https://farmaciarx.com" target="_blank" rel="noopener">Visit farmaciarx.com <span aria-hidden="true">&#8599;</span></a> <a class="pill dark" href="https://farmaciarxcare.com" target="_blank" rel="noopener">Visit farmaciarxcare.com <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-nyko" data-shot="nyko"><span class="t">Nyko</span><span class="m">Private AI assistant in the browser<small>Vanilla ES modules, PWA · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-nyko"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>nyko.app</span></div><div class="screen"><img src="/assets/img/tall-nyko.webp" srcset="/assets/img/tall-nyko-800.webp 800w, /assets/img/tall-nyko.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Nyko, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Product · Live · 2026</p>
+        <h3>A private AI assistant that lives in the browser.</h3>
+        <p>Chat with slash commands, vision and PDF input, voice mode, custom bots with their own memory, web search, and a live canvas that renders HTML, SVG and diagrams as the model writes them. Installs as a PWA and keeps settings and history on the device.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Product, design, build</dd></div><div><dt>Stack</dt><dd>Vanilla JS modules, service worker, Netlify</dd></div><div><dt>Outcome</dt><dd>Installable PWA; chat, vision, voice, bots and canvas in one client</dd></div></dl>
+        <a class="pill dark" href="https://nyko.app" target="_blank" rel="noopener">Visit nyko.app <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-hyperswarm" data-shot="hyperswarm"><span class="t">Hyperswarm</span><span class="m">Browser arcade roguelite with no engine<small>Canvas 2D, WebGL bloom · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-hyperswarm"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>inquisitive-semifreddo-b68115.netlify.app</span></div><div class="screen"><img src="/assets/img/tall-hyperswarm.webp" srcset="/assets/img/tall-hyperswarm-800.webp 800w, /assets/img/tall-hyperswarm.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Hyperswarm, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Game · Live · 2026</p>
+        <h3>A twin stick roguelite written from scratch on Canvas.</h3>
+        <p>Four ships, 28 stackable upgrades, weapon evolutions, four bosses, daily operations, a hangar, trophies and records, all in one 182 KB HTML file with no external scripts. The game loop, collision, particles and a WebGL bloom pass are hand written; saves live in localStorage.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, code, audio, art</dd></div><div><dt>Stack</dt><dd>Canvas 2D, WebGL, JavaScript</dd></div><div><dt>Outcome</dt><dd>Version 6.0; one file; runs offline</dd></div></dl>
+        <a class="pill dark" href="https://inquisitive-semifreddo-b68115.netlify.app" target="_blank" rel="noopener">Visit inquisitive-semifreddo-b68115.netlify.app <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-gpbiosupply" data-shot="gpbiosupply"><span class="t">GP Biosupply</span><span class="m">B2B supply site with a certificate library<small>HTML, CSS, JS, Netlify forms · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-gpbiosupply"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>gpbiosupply.com</span></div><div class="screen"><img src="/assets/img/tall-gpbiosupply.webp" srcset="/assets/img/tall-gpbiosupply-800.webp 800w, /assets/img/tall-gpbiosupply.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="GP Biosupply, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">B2B · Live · 2026</p>
+        <h3>A supply site for clinics that asks the questions a buyer asks.</h3>
+        <p>Catalog, quality process, a certificate of analysis library with every batch PDF, resources, FAQ and a practice pricing request form. Written for med spas and weight loss programs that need the paperwork before the product.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, build, COA library, deploy</dd></div><div><dt>Stack</dt><dd>HTML, CSS, JS, Netlify forms</dd></div><div><dt>Outcome</dt><dd>Batch certificates published as a browsable library; pricing requests routed to the owner</dd></div></dl>
+        <a class="pill dark" href="https://gpbiosupply.com" target="_blank" rel="noopener">Visit gpbiosupply.com <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-kormiia" data-shot="kormiia"><span class="t">Kormiia</span><span class="m">Single product telehealth page<small>HTML, CSS, Netlify forms · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-kormiia"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>kormiia.com</span></div><div class="screen"><img src="/assets/img/tall-kormiia.webp" srcset="/assets/img/tall-kormiia-800.webp 800w, /assets/img/tall-kormiia.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Kormiia, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Telehealth · Live · 2026</p>
+        <h3>One compounded product, explained properly.</h3>
+        <p>How it works, the formulation, safety, the pharmacy and prescriber behind it, three pricing tiers and a consultation form, with the Rx only and California only disclosures where a reader will see them. No framework, no tracking scripts, one page.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, build, compliance copy with the pharmacist, deploy</dd></div><div><dt>Stack</dt><dd>HTML, CSS, Netlify forms</dd></div><div><dt>Outcome</dt><dd>Single page, no JS libraries, consultation form live</dd></div></dl>
+        <a class="pill dark" href="https://kormiia.com" target="_blank" rel="noopener">Visit kormiia.com <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-universe-drift" data-shot="universe-drift"><span class="t">Universe Drift</span><span class="m">Real time solar system explorer<small>three.js, WebGL · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-universe-drift"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>amazing-flan-f43887.netlify.app</span></div><div class="screen"><img src="/assets/img/tall-universe-drift.webp" srcset="/assets/img/tall-universe-drift-800.webp 800w, /assets/img/tall-universe-drift.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Universe Drift, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Showpiece · Live · 2026</p>
+        <h3>A real time solar system you can fly through.</h3>
+        <p>Free flight and a narrated guided tour, per planet data panels, orbit lines, moons and the asteroid belt as toggles, ambient audio and a voice picker for the narration. Built on three.js with ES modules and no bundler.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Design, code, narration</dd></div><div><dt>Stack</dt><dd>three.js, WebGL, JavaScript</dd></div><div><dt>Outcome</dt><dd>Runs in the browser with no install; tour and free flight modes</dd></div></dl>
+        <a class="pill dark" href="https://amazing-flan-f43887.netlify.app" target="_blank" rel="noopener">Visit amazing-flan-f43887.netlify.app <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-fluid-cursor" data-shot="fluid-cursor"><span class="t">Fluid Cursor</span><span class="m">Drop in liquid cursor library<small>4 KB, zero dependencies · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-fluid-cursor"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>fluid-cursor-demo.netlify.app</span></div><div class="screen"><img src="/assets/img/tall-fluid-cursor.webp" srcset="/assets/img/tall-fluid-cursor-800.webp 800w, /assets/img/tall-fluid-cursor.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Fluid Cursor, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Library · Live · 2026</p>
+        <h3>A cursor that flows, in four kilobytes.</h3>
+        <p>A spring physics cursor that replaces the pointer with a blob that trails movement, grows on links and buttons, and is configured with data attributes. The demo page is a live control playground with a copyable install snippet; touch devices get an autonomous blob instead.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Library design, physics, playground</dd></div><div><dt>Stack</dt><dd>JavaScript, no dependencies</dd></div><div><dt>Outcome</dt><dd>4 KB gzipped; data attribute API; works with one script tag</dd></div></dl>
+        <a class="pill dark" href="https://fluid-cursor-demo.netlify.app" target="_blank" rel="noopener">Visit fluid-cursor-demo.netlify.app <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+    <div class="item" role="button" tabindex="0" aria-expanded="false" aria-controls="case-smart-parking" data-shot="smart-parking"><span class="t">Distributed Smart Parking</span><span class="m">Fault tolerant distributed system, CECS 327<small>Stdlib Python, Web Workers · 2026</small></span><span class="plus" aria-hidden="true"></span></div>
+    <div class="case" id="case-smart-parking"><div class="case-in"><div class="case-grid">
+      <div class="frame tall"><div class="bar"><i></i><i></i><i></i><span>cecs327-smart-parking.netlify.app</span></div><div class="screen"><img src="/assets/img/tall-smart-parking.webp" srcset="/assets/img/tall-smart-parking-800.webp 800w, /assets/img/tall-smart-parking.webp 1200w" sizes="(min-width:960px) 52vw, 92vw" alt="Distributed Smart Parking, full page" loading="lazy" decoding="async"></div></div>
+      <div class="case-text">
+        <p class="label">Coursework · Live demo · 2026</p>
+        <h3>A distributed system you can crash from the browser.</h3>
+        <p>Sensor nodes, lot servers and a driver client as separate processes talking over hand built TCP framing, idempotent request reply, a pub sub broker and registry based group messaging, all from the Python standard library. Lot servers replay their logs on restart. The demo runs the whole system in the page as Web Workers, with latency, drops and link cuts you control, five scripted failure scenarios and downloadable logs. Group project of seven; 38 of the 40 commits are mine.</p>
+        <dl class="facts"><div><dt>Role</dt><dd>Protocols, servers, recovery, browser demo</dd></div><div><dt>Stack</dt><dd>Python standard library, vanilla JS, Web Workers</dd></div><div><dt>Outcome</dt><dd>Milestones 1 and 2 complete; seven whole system failure scenarios pass</dd></div></dl>
+        <a class="pill dark" href="https://cecs327-smart-parking.netlify.app" target="_blank" rel="noopener">Visit cecs327-smart-parking.netlify.app <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div></div></div>
+  </div>
+  <div class="preview" aria-hidden="true"><div class="stack">
+    <img data-key="farmacia-wellness" src="/assets/img/shot-farmacia-wellness.webp" srcset="/assets/img/shot-farmacia-wellness.webp 1200w, /assets/img/shot-farmacia-wellness-1800.webp 1800w, /assets/img/shot-farmacia-wellness-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="hairrx" src="/assets/img/shot-hairrx.webp" srcset="/assets/img/shot-hairrx.webp 1200w, /assets/img/shot-hairrx-1800.webp 1800w, /assets/img/shot-hairrx-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="cyberforge" src="/assets/img/shot-cyberforge.webp" srcset="/assets/img/shot-cyberforge.webp 1200w, /assets/img/shot-cyberforge-1800.webp 1800w, /assets/img/shot-cyberforge-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="keykarams" src="/assets/img/shot-keykarams.webp" srcset="/assets/img/shot-keykarams.webp 1200w, /assets/img/shot-keykarams-1800.webp 1800w, /assets/img/shot-keykarams-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="darkforge" src="/assets/img/shot-darkforge.webp" srcset="/assets/img/shot-darkforge.webp 1200w, /assets/img/shot-darkforge-1800.webp 1800w, /assets/img/shot-darkforge-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="farmaciarx" src="/assets/img/shot-farmaciarx.webp" srcset="/assets/img/shot-farmaciarx.webp 1200w, /assets/img/shot-farmaciarx-1800.webp 1800w, /assets/img/shot-farmaciarx-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="nyko" src="/assets/img/shot-nyko.webp" srcset="/assets/img/shot-nyko.webp 1200w, /assets/img/shot-nyko-1800.webp 1800w, /assets/img/shot-nyko-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="hyperswarm" src="/assets/img/shot-hyperswarm.webp" srcset="/assets/img/shot-hyperswarm.webp 1200w, /assets/img/shot-hyperswarm-1800.webp 1800w, /assets/img/shot-hyperswarm-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="gpbiosupply" src="/assets/img/shot-gpbiosupply.webp" srcset="/assets/img/shot-gpbiosupply.webp 1200w, /assets/img/shot-gpbiosupply-1800.webp 1800w, /assets/img/shot-gpbiosupply-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="kormiia" src="/assets/img/shot-kormiia.webp" srcset="/assets/img/shot-kormiia.webp 1200w, /assets/img/shot-kormiia-1800.webp 1800w, /assets/img/shot-kormiia-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="universe-drift" src="/assets/img/shot-universe-drift.webp" srcset="/assets/img/shot-universe-drift.webp 1200w, /assets/img/shot-universe-drift-1800.webp 1800w, /assets/img/shot-universe-drift-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="fluid-cursor" src="/assets/img/shot-fluid-cursor.webp" srcset="/assets/img/shot-fluid-cursor.webp 1200w, /assets/img/shot-fluid-cursor-1800.webp 1800w, /assets/img/shot-fluid-cursor-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+    <img data-key="smart-parking" src="/assets/img/shot-smart-parking.webp" srcset="/assets/img/shot-smart-parking.webp 1200w, /assets/img/shot-smart-parking-1800.webp 1800w, /assets/img/shot-smart-parking-2400.webp 2400w" sizes="800px" width="1200" height="750" alt="" loading="lazy" decoding="async">
+  </div></div>
+  <div class="cursor-tag" aria-hidden="true">Open</div>
+</section>
 
+<section class="section" id="systems">
+  <div class="head">
+    <h2 class="lines">The systems behind the agency.</h2>
+    <p class="fade">Internal tooling built so fixed ship dates hold: the parts of delivery that are the same on every project, automated once and reused everywhere. Numbers are from production.</p>
+  </div>
+  <div class="sys">
+    <div class="fade"><span class="n">01</span><h3>AI Support Agent</h3><p>Claude agent with Stripe and Shopify tool calls for refunds and orders, a pgvector knowledge base, and a structured handoff to a person when confidence drops.</p><div class="k"><div><b>68%</b><span>Auto-resolved</span></div><div><b>1.4 s</b><span>Avg response</span></div><div><b>99.97%</b><span>Uptime</span></div></div></div>
+    <div class="fade"><span class="n">02</span><h3>ROI Calculator</h3><p>Three sliders to annual savings in real time on darkforgeai.com. Dependency-free and under a kilobyte of logic.</p><div class="k"><div><b>~30%</b><span>Lead share</span></div><div><b>0</b><span>Dependencies</span></div></div></div>
+    <div class="fade"><span class="n">03</span><h3>Product Image Pipeline</h3><p>Batch product variants from one photo: pixel-level color detection, region isolation, gradient interpolation and precise text rendering.</p><div class="k"><div><b>500×</b><span>Faster</span></div><div><b>2,000+</b><span>Variants</span></div></div></div>
+    <div class="fade"><span class="n">04</span><h3>Lead Sourcing Stack</h3><p>Scrapers, model-driven enrichment and browser automation feeding a deduplicated list of qualified leads. Bootstrapped DarkForge to its first ten clients.</p><div class="k"><div><b>12k+</b><span>Leads</span></div><div><b>94%</b><span>Dedupe rate</span></div></div></div>
+    <div class="fade"><span class="n">05</span><h3>Multi-Domain Infrastructure</h3><p>One-command deploys and hardened hosting across twelve domains on three DNS providers: records, SSL, security headers, environment isolation.</p><div class="k"><div><b>12</b><span>Domains</span></div><div><b>&lt;60 s</b><span>Deploy</span></div></div></div>
+    <div class="fade"><span class="n">06</span><h3>Email Deliverability Audit</h3><p>Pulls live DNS for a whole domain portfolio, validates SPF, DKIM and DMARC, scores deliverability and writes a graded Markdown report.</p><div class="k"><div><b>12</b><span>Domains audited</span></div><div><b>A</b><span>Grade</span></div></div></div>
+    <div class="fade"><span class="n">07</span><h3>Compliance Page Generator</h3><p>Vertical-aware privacy, terms and disclosure pages with state-by-state additions, generated per client site and reviewed by counsel before launch.</p><div class="k"><div><b>8</b><span>Verticals</span></div><div><b>&lt;30 s</b><span>Per site</span></div></div></div>
+    <div class="fade"><span class="n">08</span><h3>AI E-Commerce Platforms</h3><p>Compliance-ready storefront delivery for wellness, retail and regulated verticals, where code, copy and legal pages are model-assisted and reviewed by people.</p><div class="k"><div><b>5+</b><span>Shipped</span></div><div><b>60 to 80%</b><span>Time saved</span></div></div></div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"><img src="/assets/img/studio.webp" srcset="/assets/img/studio-1200.webp 1200w, /assets/img/studio.webp 2000w" sizes="100vw" width="2000" height="1125" alt="" loading="lazy" decoding="async"></div>
+
+<section class="section" id="open-source">
+  <div class="head">
+    <h2 class="lines">Twenty-four public repositories, written to be run.</h2>
+    <p class="fade">Security tooling, systems software and computer science depth, all on <a href="https://github.com/forgehk" target="_blank" rel="noopener">github.com/forgehk</a>. The fourteen below each ship with a test suite, continuous integration or a live demo; the rest of the account is coursework and experiments kept public as a record.</p>
+  </div>
+  <div class="repos fade">
+    <div class="repo-group">Security</div>
+    <a class="repo" href="https://github.com/forgehk/darkforge-edr" target="_blank" rel="noopener"><span class="name">darkforge-edr</span><span class="d">Linux endpoint detection agent: /proc telemetry through a YAML rule engine, JSON lines alerts with MITRE tags.</span><span class="lang go"><i></i>Go</span><span class="t">37 tests, race CI</span></a>
+    <a class="repo" href="https://github.com/forgehk/honeytoken-sentinel" target="_blank" rel="noopener"><span class="name">honeytoken-sentinel</span><span class="d">Decoy AWS, GitHub and Stripe credentials plus canary URLs, with an alert the second one is touched. Stdlib only.</span><span class="lang py"><i></i>Python</span><span class="t">19 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/pipeline-armor" target="_blank" rel="noopener"><span class="name">pipeline-armor</span><span class="d">CI security gate for GitHub Actions: secret scanner with an entropy floor, AST pattern scanner, YAML policy engine.</span><span class="lang py"><i></i>Python</span><span class="t">19 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/nextjs-auth-armor" target="_blank" rel="noopener"><span class="name">nextjs-auth-armor</span><span class="d">Hardened Next.js 14 starter: Supabase magic link auth, RLS migrations, CSP middleware, honeypot forms.</span><span class="lang ts"><i></i>TypeScript</span><span class="t">Typecheck and build CI</span></a>
+    <a class="repo" href="https://github.com/forgehk/ctf-toolkit" target="_blank" rel="noopener"><span class="name">ctf-toolkit</span><span class="d">Stdlib only CTF CLI: encoders, classical ciphers, hash identification and cracking, textbook RSA attacks from first principles.</span><span class="lang py"><i></i>Python</span><span class="t">36 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/phish-forge" target="_blank" rel="noopener"><span class="name">phish-forge</span><span class="d">Score an .eml for phishing from header, URL and body heuristics, including hand rolled typosquat and homoglyph checks. CLI and FastAPI.</span><span class="lang py"><i></i>Python</span><span class="t">23 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/steg-toolkit" target="_blank" rel="noopener"><span class="name">steg-toolkit</span><span class="d">Image steganography: LSB hide and extract, strings recovery, per channel entropy and LSB plane heatmaps.</span><span class="lang py"><i></i>Python</span><span class="t">Pillow</span></a>
+    <div class="repo-group">Systems and compilers</div>
+    <a class="repo" href="https://github.com/forgehk/tiny-compiler" target="_blank" rel="noopener"><span class="name">tiny-compiler</span><span class="d">A Pascal style language that compiles to MIPS 32 assembly: lexer, parser, AST, codegen and a reference interpreter in 700 lines.</span><span class="lang py"><i></i>Python</span><span class="t">41 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/mips-emulator" target="_blank" rel="noopener"><span class="name">mips-emulator</span><span class="d">MIPS 32 assembler and single cycle emulator in C++17 with trace and memory dump modes. Runs textbook programs end to end.</span><span class="lang cpp"><i></i>C++17</span><span class="t">15 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/bigint-cpp" target="_blank" rel="noopener"><span class="name">bigint-cpp</span><span class="d">Arbitrary precision integers with operator overloading, tail recursive factorial and Fibonacci, Collatz walker.</span><span class="lang cpp"><i></i>C++17</span><span class="t">78 checks</span></a>
+    <a class="repo" href="https://github.com/forgehk/cecs327-smart-parking" target="_blank" rel="noopener"><span class="name">cecs327-smart-parking</span><span class="d">Fault tolerant distributed parking system in stdlib Python: TCP framing, idempotent request reply, pub sub, group messaging, log replay.</span><span class="lang py"><i></i>Python</span><span class="t">Live demo</span></a>
+    <div class="repo-group">Tooling and web</div>
+    <a class="repo" href="https://github.com/forgehk/lead-foundry" target="_blank" rel="noopener"><span class="name">lead-foundry</span><span class="d">Normalize, dedupe and ICP score lead CSVs locally, with a pluggable enrichment hook and YAML rules.</span><span class="lang py"><i></i>Python</span><span class="t">19 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/pixel-forge" target="_blank" rel="noopener"><span class="name">pixel-forge</span><span class="d">One product photo to HSV recolored catalog variants with Pillow. Deterministic, offline, hue wraparound handled.</span><span class="lang py"><i></i>Python</span><span class="t">17 tests</span></a>
+    <a class="repo" href="https://github.com/forgehk/algoviz" target="_blank" rel="noopener"><span class="name">algoviz</span><span class="d">3D sorting algorithm visualizer in vanilla Three.js with synced pseudocode: bubble, insertion, quick, merge, heap.</span><span class="lang js"><i></i>JavaScript</span><span class="t">Three.js</span></a>
+  </div>
+</section>
+
+
+<section class="about" id="about">
+  <div class="img fade"><img src="/assets/img/about.webp" width="1600" height="1200" alt="A black notebook open to hand-drawn architecture diagrams beside a keyboard on a dark desk" loading="lazy" decoding="async"></div>
+  <div>
+    <h2 class="lines">Student by day. Founder, engineer and occasional compiler author the rest of the time.</h2>
+    <p class="fade">I study computer science at California State University, Long Beach, where my senior project is CyberForge, an adaptive web security training platform. I run DarkForge AI, a studio that ships AI automation, commerce and infrastructure work for Orange County businesses, and I am the developer behind the Farmacia pharmacy group's sites, from the bilingual supplement store to the telehealth front door. I care about software that holds up in production: tested, measured, and boring in all the right places.</p>
+    <div class="facts fade">
+      <div><b>13</b><span>Live platforms</span></div>
+      <div><b>24</b><span>Public repositories</span></div>
+      <div><b>3.8</b><span>GPA, CSULB</span></div>
+      <div><b>2027</b><span>B.S. Computer Science</span></div>
     </div>
-  </section>
+    <p class="fade mt-2"><a class="pill" href="/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></p>
+  </div>
+</section>
 
-  <section id="stack">
-    <div class="container">
-      <h2>Stack</h2>
-      <pre style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; overflow-x: auto; font-size: 13px;">
-Languages    : Python · TypeScript · JavaScript · C++ · C · C# · Go · Java · SQL · Bash · Prolog
-Full-Stack   : React · Next.js · Node.js · Supabase · Netlify · REST APIs · Shopify
-AI / Auto    : Claude · LLM Orchestration · Agent Workflows · PIL/Pillow · Apify
-Security     : DNS (A/CNAME/MX/SPF/DKIM) · SSL/TLS · HTTP Headers · Env Isolation
-              · SAST · SCA · Secrets Scanning · Honeypot Forms · MITRE ATT&amp;CK
-              · LSB Steganography · Classical Cryptography · Phishing Forensics
-CS           : Data Structures · Algorithms · OS · Computer Architecture
-              · Logic Programming · Discrete Math · OOP
-DevOps       : Git · Linux · GitHub Actions · One-command Netlify deploys
-      </pre>
-    </div>
-  </section>
+<section class="section exp" id="experience">
+  <div class="head">
+    <h2 class="lines">Where the work happened.</h2>
+    <p class="fade">Two years of shipping under real constraints, alongside the degree. The full version is in the <a href="/resume.pdf" target="_blank" rel="noopener">resume</a>.</p>
+  </div>
+  <div class="timeline fade">
+    <div class="row"><span class="when">Jan 2024 to present</span><div><h3>Founder and Full-Stack Engineer</h3><p class="org">DarkForge AI · Anaheim, California</p><p>Bootstrapped the studio to 10+ paying clients across wellness, real estate, e-commerce and telehealth. Shipped 12 production platforms, the image pipeline, the lead stack and a Claude support agent running at 99.97% uptime.</p></div></div>
+    <div class="row"><span class="when">12-week internship</span><div><h3>Technology and Process Improvement Intern</h3><p class="org">Farmacia Anaheim · Anaheim, California</p><p>AI-driven workflows and automation for the pharmacy's operations, end-to-end catalog operations across multiple product lines, international supplier coordination, and a brand identity system the store still uses.</p></div></div>
+    <div class="row"><span class="when">Jan 2025 to May 2027, expected</span><div><h3>B.S. Computer Science</h3><p class="org">California State University, Long Beach</p><p>3.8 GPA. President's List, Fall 2025.</p></div></div>
+    <div class="row"><span class="when">Aug 2022 to Dec 2024</span><div><h3>Associate Degree, Computer Science</h3><p class="org">Cypress College and Fullerton College</p><p>3.8 GPA. Completed through dual enrollment while at Western High School.</p></div></div>
+  </div>
+</section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Open to</h2>
-      <div class="roles">
-        <span>Software Engineer Internships</span>
-        <span>AppSec / DevSecOps</span>
-        <span>SOC / Blue Team</span>
-        <span>Red Team / Offensive Security</span>
-        <span>Full-Stack / AI roles</span>
-      </div>
-      <p style="margin-top: 22px; max-width: 680px; color: var(--text-dim);">
-        Looking for <strong>Summer 2026 / Fall 2026</strong> opportunities — remote or hybrid.
-      </p>
-      <p style="margin-top: 8px;">
-        📬 <a href="mailto:info@darkforgeai.com">info@darkforgeai.com</a> &nbsp;·&nbsp;
-        🔗 <a href="https://github.com/forgehk">github.com/forgehk</a> &nbsp;·&nbsp;
-        🏢 <a href="https://darkforgeai.com">DarkForge AI</a>
-      </p>
-    </div>
-  </section>
+<section class="contact" id="contact">
+  <div class="curve" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0 0C480 105 960 105 1440 0Z" fill="#131416"/></svg></div>
+  <h2 class="lines">Let's build something that holds up.</h2>
+  <div class="line">
+    <a class="roundbtn" href="mailto:hasankarakra01@gmail.com"><span>Get in touch</span></a>
+    <p class="fade" style="color:var(--text-2);max-width:40ch">Contract engineering, technical collaborations and full-time roles. Replies within one business day.</p>
+  </div>
+  <div class="pills">
+    <a class="pill" href="mailto:hasankarakra01@gmail.com">hasankarakra01@gmail.com</a>
+    <a class="pill" href="/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    <a class="pill" href="https://github.com/forgehk" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="meta">
+    <div class="col"><span class="label">Version</span><span><span data-year>2026</span> © Edition</span></div>
+    <div class="col"><span class="label">Local time</span><span data-clock>Anaheim, CA</span></div>
+    <div class="col"><span class="label">Elsewhere</span><div class="socials"><a href="https://github.com/forgehk" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/hasan-karakra-ba94a440b/" target="_blank" rel="noopener">LinkedIn</a><a href="https://app.joinhandshake.com/profiles/hasan-karakra" target="_blank" rel="noopener">Handshake</a><a href="https://darkforgeai.com" target="_blank" rel="noopener">DarkForge AI</a></div></div>
+  </div>
+</section>
 
-  <footer>
-    <div class="container row">
-      <span>© 2026 @forgehk. <a href="https://github.com/forgehk/forgehk.github.io">View source</a>.</span>
-      <span>Built with vanilla HTML/CSS. No tracking, no analytics, no cookies.</span>
-    </div>
-  </footer>
+</main>
+
+<script src="/assets/vendor/lenis.min.js?v=1.3.26"></script>
+<script src="/assets/vendor/gsap.min.js?v=3.15.0"></script>
+<script src="/assets/vendor/ScrollTrigger.min.js?v=3.15.0"></script>
+<script src="/assets/main.js?v=202610301200"></script>
 </body>
 </html>
